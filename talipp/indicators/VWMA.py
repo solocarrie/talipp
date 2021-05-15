@@ -27,5 +27,7 @@ class VWMA(Indicator):
             for value in self.input_values[-self.period:]:
                 s += value.close * value.volume
                 v += value.volume
-
-            return s / v
+            if v==0:
+                return float('NaN')
+            else:
+                return s / v
